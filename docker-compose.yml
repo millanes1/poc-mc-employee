@@ -1,0 +1,18 @@
+version: '2'
+services:
+  ms-rest-employee:
+    build:
+      context: .
+      dockerfile: dev/Dockerfile.dev
+    ports:
+    - 8078:8080
+    container_name: ms-rest-employee
+    external_links:
+      - postgresdb:postgres
+    networks:
+      - default
+      - postgresdb_default
+networks:
+  default:
+  postgresdb_default:
+    external: true
